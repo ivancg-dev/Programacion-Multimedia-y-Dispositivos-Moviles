@@ -1,0 +1,71 @@
+# Archivos generados por el sistema operativo
+.DS_Store
+Thumbs.db
+
+# Archivos de Android Studio
+**/.idea/
+**/*.iml
+**/*.iws
+**/.gradle/
+**/local.properties
+
+# Archivos de compilación
+**/build/
+**/*/build/
+**/bin/
+**/gen/
+
+# Salida de NDK
+**/obj/
+
+# Archivos de log
+**/*.log
+
+# Archivos temporales
+**/*.tmp
+**/*.temp
+**/*.bak
+
+# Archivos de caché
+**/.cxx/
+**/.externalNativeBuild/
+**/.cache/
+**/captures/
+
+# Configuración personal
+**/*.swp
+**/*.swo
+
+# Archivos de empaquetado
+**/*.apk
+**/*.ap_
+
+# Keystores (no deberías subirlos nunca)
+**/*.jks
+**/*.keystore
+
+# Archivos de lint
+**/lint/intermediates/
+**/lint/generated/
+
+# Archivos de test
+**/test-output/
+
+# Archivos de configuración de Gradle
+**/.gradle/
+**/gradle-app.setting
+
+# Archivos de cobertura de código
+**/*.ec
+
+# Firebase crashlytics y performance
+**/crashlytics-build.properties
+
+# Kotlin build
+**/*.kotlin_module
+
+# Jetpack Compose
+**/compose-compiler/
+
+# Configuración específica de VSCode (opcional)
+**/.vscode/
