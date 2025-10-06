@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:columnCount="3"
+    android:orientation="horizontal"
+    android:rowCount="3"
+    android:useDefaultMargins="true">
+    <Button
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:backgroundTint="#456789"
+        android:text="Boton 1">
+    </Button>
+    <Button
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:backgroundTint="#894545"
+        android:layout_rowSpan="2"
+        android:layout_gravity="fill"
+        android:text="Boton 2">
+    </Button>
+    <Button
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:backgroundTint="#568945"
+        android:text="Boton 3">
+    </Button>
+    <Button
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:backgroundTint="#897B45"
+        android:text="Boton 4">
+    </Button>
+    <Button
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:backgroundTint="#894588"
+        android:text="Boton 5">
+    </Button>
+    <Button
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:backgroundTint="#458975"
+        android:layout_columnSpan="3"
+        android:layout_gravity="fill"
+        android:text="Boton 6">
+    </Button>
+</GridLayout>
