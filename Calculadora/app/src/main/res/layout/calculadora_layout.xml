@@ -12,7 +12,8 @@
             android:text="0"
             android:textAlignment="textEnd"
             android:autoSizeTextType="uniform"
-            android:background="#B4B4B4">
+            android:background="#B4B4B4"
+            android:id="@+id/text_resultado">
         </TextView>
     </TableRow>
     <TableRow>
@@ -21,28 +22,32 @@
             android:layout_height="wrap_content"
             android:layout_margin="1dp"
             android:backgroundTint="#678845"
-            android:text="1">
+            android:text="1"
+            android:id="@+id/btn1">
         </Button>
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="1dp"
             android:backgroundTint="#678845"
-            android:text="2">
+            android:text="2"
+            android:id="@+id/btn2">
         </Button>
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="1dp"
             android:backgroundTint="#678845"
-            android:text="3">
+            android:text="3"
+            android:id="@+id/btn3">
         </Button>
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="1dp"
             android:backgroundTint="#684588"
-            android:text="/">
+            android:text="/"
+            android:id="@+id/btnDiv">
         </Button>
     </TableRow>
     <TableRow>
@@ -51,28 +56,32 @@
             android:layout_height="wrap_content"
             android:layout_margin="1dp"
             android:backgroundTint="#678845"
-            android:text="4">
+            android:text="4"
+            android:id="@+id/btn4">
         </Button>
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="1dp"
             android:backgroundTint="#678845"
-            android:text="5">
+            android:text="5"
+            android:id="@+id/btn5">
         </Button>
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="1dp"
             android:backgroundTint="#678845"
-            android:text="6">
+            android:text="6"
+            android:id="@+id/btn6">
         </Button>
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="1dp"
             android:backgroundTint="#684588"
-            android:text="x">
+            android:text="x"
+            android:id="@+id/btnMul">
         </Button>
     </TableRow>
     <TableRow>
@@ -81,28 +90,32 @@
             android:layout_height="wrap_content"
             android:layout_margin="1dp"
             android:backgroundTint="#678845"
-            android:text="7">
+            android:text="7"
+            android:id="@+id/btn7">
         </Button>
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="1dp"
             android:backgroundTint="#678845"
-            android:text="8">
+            android:text="8"
+            android:id="@+id/btn8">
         </Button>
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="1dp"
             android:backgroundTint="#678845"
-            android:text="9">
+            android:text="9"
+            android:id="@+id/btn9">
         </Button>
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="1dp"
             android:backgroundTint="#684588"
-            android:text="-">
+            android:text="-"
+            android:id="@+id/btnRes">
         </Button>
     </TableRow>
     <TableRow>
@@ -111,28 +124,52 @@
             android:layout_height="wrap_content"
             android:layout_margin="1dp"
             android:backgroundTint="#678845"
-            android:text="0">
+            android:text="0"
+            android:id="@+id/btn0">
         </Button>
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="1dp"
             android:backgroundTint="#684588"
-            android:text=".">
+            android:text="."
+            android:id="@+id/btnDec">
         </Button>
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="1dp"
             android:backgroundTint="#684588"
-            android:text="=">
+            android:text="="
+            android:id="@+id/btnIg">
         </Button>
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="1dp"
             android:backgroundTint="#684588"
-            android:text="+">
+            android:text="+"
+            android:id="@+id/btnSum">
+        </Button>
+    </TableRow>
+    <TableRow>
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="1dp"
+            android:backgroundTint="#684588"
+            android:layout_span="2"
+            android:text="C"
+            android:id="@+id/btnC">
+        </Button>
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="1dp"
+            android:backgroundTint="#684588"
+            android:layout_span="2"
+            android:text="AC"
+            android:id="@+id/btnAC">
         </Button>
     </TableRow>
 </TableLayout>
