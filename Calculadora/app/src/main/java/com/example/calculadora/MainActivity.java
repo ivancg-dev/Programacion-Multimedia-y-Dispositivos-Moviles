@@ -42,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
                 // Si actualmente el texto es "0"
                 if (text.equals("0")) {
                     if (finalI == 0) {
-                        return; // Evita 00, 000...
+                        return;
                     } else {
                         input = String.valueOf(finalI);
                         texto.setText(input);
@@ -57,8 +57,18 @@ public class MainActivity extends AppCompatActivity {
                     texto.setText(input);
                     return;
                 }
-
+                String[] separacion = text.split("[+\\-*/]");
+                int n = separacion.length;
                 // Caso general: concatenar número
+                if (separacion[n-1].startsWith("0") && finalI == 0){
+                    return; // Evita 00, 000...
+                }else if(separacion[n-1].startsWith("0") && finalI != 0){
+                    String textSecundario = text.substring(0, text.length() - 1);
+                    System.out.println(textSecundario);
+                    input = textSecundario + finalI;
+                    texto.setText(input);
+                    return;
+                }
                 input = text + finalI;
                 texto.setText(input);
             });
