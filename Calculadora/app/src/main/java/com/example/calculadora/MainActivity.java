@@ -62,7 +62,7 @@ public class MainActivity extends AppCompatActivity {
                 // Caso general: concatenar número
                 if (separacion[n-1].startsWith("0") && finalI == 0){
                     return; // Evita 00, 000...
-                }else if(separacion[n-1].startsWith("0") && finalI != 0){
+                }else if(separacion[n-1].startsWith("0") && finalI != 0 && !separacion[n-1].startsWith("0.")){
                     String textSecundario = text.substring(0, text.length() - 1);
                     System.out.println(textSecundario);
                     input = textSecundario + finalI;

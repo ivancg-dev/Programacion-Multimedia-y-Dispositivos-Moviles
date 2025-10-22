@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center">
+    <TableRow>
+        <TextView
+            android:id="@+id/txtEstado"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:text="Estado: No Pulsado"/>
+    </TableRow>
+    <TableRow>
+        <ToggleButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/miToggleButton"
+            android:text="ToggleButton"
+            android:textOff="No Pulsado"
+            android:textOn="Pulsado">
+
+        </ToggleButton>
+    </TableRow>
+    <TableRow>
+        <ImageButton
+            android:id="@+id/miImageButton"
+            android:layout_width="99dp"
+            android:layout_height="111dp"
+            android:src="@drawable/imagen2"
+            android:scaleType="centerInside"
+            android:adjustViewBounds="true"
+            android:background="@android:color/transparent"
+            />
+    </TableRow>
+
+</TableLayout>
