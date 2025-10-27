@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="center">
+
+    <TableRow>
+        <EditText
+            android:id="@+id/etText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Texto"
+            android:inputType="text"
+            android:imeOptions="actionNext"/>
+
+    </TableRow>
+    <TableRow>
+        <EditText
+            android:id="@+id/etMultiLine"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Texto multilinea"
+            android:inputType="textMultiLine"
+            android:minLines="3"
+            android:gravity="top|start"
+            android:scrollbars="vertical"
+            android:imeOptions="flagNoEnterAction"/>
+
+    </TableRow>
+    <TableRow>
+        <EditText
+            android:id="@+id/etPersonName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Nombre y apellidos"
+            android:inputType="textCapWords"
+            android:imeOptions="actionNext"/>
+
+    </TableRow>
+    <TableRow>
+        <EditText
+            android:id="@+id/etCorreo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Correo electronico"
+            android:inputType="textEmailAddress"
+            android:imeOptions="actionNext"/>
+
+    </TableRow>
+    <TableRow>
+        <EditText
+            android:id="@+id/etNumero"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Texto"
+            android:inputType="text"
+            android:imeOptions="actionNext"/>
+
+    </TableRow>
+    <TableRow
+        >
+        <AutoCompleteTextView
+            android:id="@+id/texto"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:completionHint="Elige una opcion"
+            android:completionThreshold="4"/>
+    </TableRow>
+</TableLayout>
