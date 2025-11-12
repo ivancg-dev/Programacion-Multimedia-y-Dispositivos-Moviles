@@ -63,7 +63,7 @@ public class MainActivity extends AppCompatActivity {
 
         if (cuentaStr.isEmpty()) {
             textViewResultado.setTextColor(Color.RED);
-            textViewResultado.setText("⚠️ Falta meter el valor de la cuenta");
+            textViewResultado.setText("Falta meter el valor de la cuenta");
             return;
         }
 
@@ -72,13 +72,13 @@ public class MainActivity extends AppCompatActivity {
             cuenta = Double.parseDouble(cuentaStr);
         } catch (NumberFormatException e) {
             textViewResultado.setTextColor(Color.RED);
-            textViewResultado.setText("⚠️ Formato inválido. Introduce solo números.");
+            textViewResultado.setText("Formato inválido. Introduce solo números.");
             return;
         }
 
         if (cuenta <= 0) {
             textViewResultado.setTextColor(Color.RED);
-            textViewResultado.setText("⚠️ El valor de la cuenta debe ser mayor que 0.");
+            textViewResultado.setText("El valor de la cuenta debe ser mayor que 0.");
             return;
         }
 
@@ -96,7 +96,7 @@ public class MainActivity extends AppCompatActivity {
         String camarero = autoCompleteCamarero.getText().toString();
 
         textViewResultado.setTextColor(Color.BLACK);
-        textViewResultado.setText("✅ Total: " + total + " €\n" +
+        textViewResultado.setText("Total: " + total + " €\n" +
                 "Método de pago: " + metodoPago + "\n" +
                 "Calificación servicio: " + rating + " estrellas\n" +
                 "Camarero: " + (camarero.isEmpty() ? "No especificado" : camarero));
