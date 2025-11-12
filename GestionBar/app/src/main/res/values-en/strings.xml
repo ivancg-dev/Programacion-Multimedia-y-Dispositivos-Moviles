@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Bar Gestion</string>
+    <string name="hint_cuenta">Enter the bill total</string>
+    <string name="checkbox_propina">Include tip</string>
+    <string name="text_propina">Tip: 10%</string>
+    <string name="radio_efectivo">Cash</string>
+    <string name="radio_tarjeta">Card</string>
+    <string name="hint_camarero">Waiter name</string>
+    <string name="button_calcular">Calculate Total</string>
+</resources>

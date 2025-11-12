@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!-- Campo para el total de la cuenta -->
+    <EditText
+        android:id="@+id/editTextCuenta"
+        android:hint="@string/hint_cuenta"
+        android:inputType="numberDecimal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <!-- CheckBox para incluir propina -->
+    <CheckBox
+        android:id="@+id/checkBoxPropina"
+        android:text="@string/checkbox_propina"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <!-- SeekBar para porcentaje de propina -->
+    <TextView
+        android:id="@+id/textViewPorcentaje"
+        android:text="@string/text_propina"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <SeekBar
+        android:id="@+id/seekBarPropina"
+        android:max="30"
+        android:progress="10"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <!-- RadioGroup para método de pago -->
+    <RadioGroup
+        android:id="@+id/radioGroupPago"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <RadioButton
+            android:id="@+id/radioEfectivo"
+            android:text="@string/radio_efectivo"
+            android:checked="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <RadioButton
+            android:id="@+id/radioTarjeta"
+            android:text="@string/radio_tarjeta"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+    </RadioGroup>
+
+    <!-- RatingBar para calificación -->
+    <RatingBar
+        android:id="@+id/ratingBarServicio"
+        android:numStars="5"
+        android:stepSize="1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <!-- AutoCompleteTextView para camarero -->
+    <AutoCompleteTextView
+        android:id="@+id/autoCompleteCamarero"
+        android:hint="@string/hint_camarero"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <!-- Botón calcular -->
+    <Button
+        android:id="@+id/buttonCalcular"
+        android:text="@string/button_calcular"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <!-- Resultado -->
+    <TextView
+        android:id="@+id/textViewResultado"
+        android:text=""
+        android:textSize="16sp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+</LinearLayout>

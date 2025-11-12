@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Gestion Bar</string>
+    <string name="hint_cuenta">Introduce el total de la cuenta</string>
+    <string name="checkbox_propina">Incluir propina</string>
+    <string name="text_propina">Propina: 10%</string>
+    <string name="radio_efectivo">Efectivo</string>
+    <string name="radio_tarjeta">Tarjeta</string>
+    <string name="hint_camarero">Nombre del camarero</string>
+    <string name="button_calcular">Calcular Total</string>
+</resources>
