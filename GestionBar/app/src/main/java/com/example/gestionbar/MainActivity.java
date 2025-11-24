@@ -6,8 +6,10 @@ import android.widget.*;
 import android.view.View;
 import android.graphics.Color;
 
-public class MainActivity extends AppCompatActivity {
+import java.util.Locale;
 
+public class MainActivity extends AppCompatActivity {
+    String languageCode = Locale.getDefault().getLanguage();
     EditText editTextCuenta;
     CheckBox checkBoxPropina;
     SeekBar seekBarPropina;
@@ -43,7 +45,11 @@ public class MainActivity extends AppCompatActivity {
         seekBarPropina.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                textViewPorcentaje.setText("Propina: " + progress + "%");
+                if(languageCode.equals("en")){
+                    textViewPorcentaje.setText("Tip: " + progress + "%");
+                } else if (languageCode.equals("es")){
+                    textViewPorcentaje.setText("Propina: " + progress + "%");
+                }
             }
             @Override public void onStartTrackingTouch(SeekBar seekBar) {}
             @Override public void onStopTrackingTouch(SeekBar seekBar) {}

@@ -35,6 +35,8 @@ public class MainActivity extends AppCompatActivity {
 
 
         ListView lv = findViewById(R.id.list);
+        View miCabecera = getLayoutInflater().inflate(R.layout.cabecera_layout,null);
+        lv.addHeaderView(miCabecera);
 
         Adaptador ad = new Adaptador(this, datos);
 

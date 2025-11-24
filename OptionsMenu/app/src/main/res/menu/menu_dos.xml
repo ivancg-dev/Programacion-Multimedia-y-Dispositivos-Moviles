@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/action_settingss"
+        android:title="Settings"/>
+    <item
+        android:id="@+id/action_helpp"
+        android:title="Help"/>
+    <item
+        android:id="@+id/action_mass"
+        android:title="Más">
+        <menu>
+            <item
+                android:id="@+id/action_infoo"
+                android:title="Info"/>
+            <item
+                android:id="@+id/action_acercadee"
+                android:title="Acerca de"/>
+        </menu>
+    </item>
+    <item
+        android:id="@+id/exitt"
+        android:title="Exit"/>
+
+</menu>
