@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name" translatable="false">Lista de la Compra</string>
+    <string name="item_name" translatable="false">Nombre del artículo</string>
+    <string name="item_quantity">Cantidad</string>
+    <string name="add">Añadir</string>
+    <string name="delete">Eliminar</string>
+</resources>
