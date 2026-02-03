@@ -16,8 +16,8 @@
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="#86E438DE"
-            app:title="Material Design App - VERA" />
+            android:background="#86DEA861"
+            app:title="Practica Material Design" />
 
         <com.google.android.material.tabs.TabLayout
             android:id="@+id/tabLayout"

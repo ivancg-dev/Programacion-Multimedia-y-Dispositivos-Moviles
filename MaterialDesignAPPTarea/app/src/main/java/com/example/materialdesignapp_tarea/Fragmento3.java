@@ -1,129 +1,228 @@
 package com.example.materialdesignapp_tarea;
-import android.os.Bundle;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.EditText;
-import android.widget.ListView;
-import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-import java.util.ArrayList;
+import java.util.Stack;
 
 public class Fragmento3 extends Fragment {
 
-    private ArrayList<Item> shoppingList;
-    private ShoppingListAdapter adapter;
-    private EditText editName, editQuantity;
-    private Spinner spinnerImages;
-    private ListView listView;
-    private TextView tvEmptyList;
-
-    private int[] images = {
-            R.drawable.fruit_icon,
-            R.drawable.dairy_icon,
-            R.drawable.vegetable_icon,
-            R.drawable.meat_icon,
-            R.drawable.drink_icon
-    };
+    private TextView texto;
+    private String input = "";
+    private boolean puedeEscribirDecimal = true;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+
         View view = inflater.inflate(R.layout.fragment_fragmento3, container, false);
 
-        // Inicializar lista
-        shoppingList = new ArrayList<>();
+        texto = view.findViewById(R.id.text_resultado);
+        texto.setText("0");
 
-        // Configurar vistas
-        editName = view.findViewById(R.id.editName);
-        editQuantity = view.findViewById(R.id.editQuantity);
-        spinnerImages = view.findViewById(R.id.spinnerImages);
-        listView = view.findViewById(R.id.listView);
-        tvEmptyList = view.findViewById(R.id.tvEmptyList);
-        Button btnAdd = view.findViewById(R.id.btnAdd);
+        // Números 0–9
+        Button[] botonesNum = {
+                view.findViewById(R.id.btn0),
+                view.findViewById(R.id.btn1),
+                view.findViewById(R.id.btn2),
+                view.findViewById(R.id.btn3),
+                view.findViewById(R.id.btn4),
+                view.findViewById(R.id.btn5),
+                view.findViewById(R.id.btn6),
+                view.findViewById(R.id.btn7),
+                view.findViewById(R.id.btn8),
+                view.findViewById(R.id.btn9)
+        };
 
-        adapter = new ShoppingListAdapter(getActivity(), shoppingList);
-        listView.setAdapter(adapter);
+        for (int i = 0; i < botonesNum.length; i++) {
+            int finalI = i;
+            botonesNum[i].setOnClickListener(v -> {
+                String text = texto.getText().toString();
 
-        // Agregar listener para actualizar visibilidad
-        adapter.setOnItemRemovedListener(new ShoppingListAdapter.OnItemRemovedListener() {
-            @Override
-            public void onItemRemoved() {
-                updateEmptyListVisibility();
+                if (text.equals("0")) {
+                    if (finalI == 0) return;
+                    input = String.valueOf(finalI);
+                    texto.setText(input);
+                    return;
+                }
+
+                char ultimo = text.charAt(text.length() - 1);
+                if (esOperador(ultimo)) {
+                    input = text + finalI;
+                    texto.setText(input);
+                    return;
+                }
+
+                String[] separacion = text.split("[+\\-*/]");
+                int n = separacion.length;
+
+                if (separacion[n - 1].startsWith("0") && finalI == 0) return;
+
+                if (separacion[n - 1].startsWith("0") && finalI != 0 && !separacion[n - 1].startsWith("0.")) {
+                    String textSecundario = text.substring(0, text.length() - 1);
+                    input = textSecundario + finalI;
+                    texto.setText(input);
+                    return;
+                }
+
+                input = text + finalI;
+                texto.setText(input);
+            });
+        }
+
+        // Operadores
+        view.findViewById(R.id.btnSum).setOnClickListener(v -> setOperador("+"));
+        view.findViewById(R.id.btnRes).setOnClickListener(v -> setOperador("-"));
+        view.findViewById(R.id.btnMul).setOnClickListener(v -> setOperador("*"));
+        view.findViewById(R.id.btnDiv).setOnClickListener(v -> setOperador("/"));
+
+        // Decimal
+        view.findViewById(R.id.btnDec).setOnClickListener(v -> {
+            String text = texto.getText().toString();
+
+            if (text.isEmpty() || esOperador(text.charAt(text.length() - 1))) {
+                input = text + "0.";
+                texto.setText(input);
+                puedeEscribirDecimal = false;
+                return;
+            }
+
+            String ultimoNumero = obtenerUltimoNumero(text);
+            if (!ultimoNumero.contains(".")) {
+                input = text + ".";
+                texto.setText(input);
+                puedeEscribirDecimal = false;
             }
         });
 
-        // Configurar adapter para la lista
-        adapter = new ShoppingListAdapter(getActivity(), shoppingList);
-        listView.setAdapter(adapter);
+        // Borrar último
+        view.findViewById(R.id.btnC).setOnClickListener(v -> {
+            String original = texto.getText().toString();
+            if (!original.isEmpty() && !original.equals("0")) {
+                input = original.substring(0, original.length() - 1);
+                if (input.isEmpty()) input = "0";
+                texto.setText(input);
+            }
+        });
 
-        // Actualizar visibilidad de lista vacía
-        updateEmptyListVisibility();
+        // Borrar todo
+        view.findViewById(R.id.btnAC).setOnClickListener(v -> {
+            input = "";
+            texto.setText("0");
+            puedeEscribirDecimal = true;
+        });
 
-        // Configurar spinner con imágenes
-        ImageSpinnerAdapter imageAdapter = new ImageSpinnerAdapter(getActivity(), images);
-        spinnerImages.setAdapter(imageAdapter);
+        // Igual
+        view.findViewById(R.id.btnIg).setOnClickListener(v -> {
+            String expresion = texto.getText().toString();
 
-        // Botón agregar
-        btnAdd.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                addItem();
+            if (expresion.isEmpty() || esOperador(expresion.charAt(expresion.length() - 1))) return;
+
+            try {
+                double resultado = evaluarExpresion(expresion);
+                if (resultado == (long) resultado) {
+                    texto.setText(String.valueOf((long) resultado));
+                } else {
+                    texto.setText(String.valueOf(resultado));
+                }
+                input = texto.getText().toString();
+                puedeEscribirDecimal = true;
+            } catch (Exception e) {
+                texto.setText("Error");
+                input = "";
             }
         });
 
         return view;
     }
 
-    private void addItem() {
-        String name = editName.getText().toString().trim();
-        String quantityStr = editQuantity.getText().toString().trim();
+    // ------------------------------
+    // MÉTODOS AUXILIARES
+    // ------------------------------
 
-        if (name.isEmpty() || quantityStr.isEmpty()) {
-            Toast.makeText(getActivity(), "Rellena todos los campos", Toast.LENGTH_SHORT).show();
-            return;
+    public void setOperador(String operador) {
+        String text = texto.getText().toString();
+        if (text.isEmpty()) return;
+
+        char ultimoCaracter = text.charAt(text.length() - 1);
+        if (esOperador(ultimoCaracter)) {
+            input = text.substring(0, text.length() - 1) + operador;
+        } else {
+            input = text + operador;
         }
-
-        try {
-            int quantity = Integer.parseInt(quantityStr);
-            int selectedImage = images[spinnerImages.getSelectedItemPosition()];
-
-            Item newItem = new Item(name, quantity, selectedImage);
-            shoppingList.add(newItem);
-            adapter.notifyDataSetChanged();
-            updateEmptyListVisibility();
-
-            // Limpiar campos
-            editName.setText("");
-            editQuantity.setText("");
-
-            // Enfocar el primer campo
-            editName.requestFocus();
-
-        } catch (NumberFormatException e) {
-            Toast.makeText(getActivity(), "Cantidad no válida", Toast.LENGTH_SHORT).show();
-        }
+        texto.setText(input);
+        puedeEscribirDecimal = true;
     }
 
-    private void updateEmptyListVisibility() {
-        if (shoppingList.isEmpty()) {
-            listView.setVisibility(View.GONE);
-            tvEmptyList.setVisibility(View.VISIBLE);
-        } else {
-            listView.setVisibility(View.VISIBLE);
-            tvEmptyList.setVisibility(View.GONE);
+    private boolean esOperador(char c) {
+        return c == '+' || c == '-' || c == '*' || c == '/';
+    }
+
+    private String obtenerUltimoNumero(String texto) {
+        int i = texto.length() - 1;
+        while (i >= 0 && !esOperador(texto.charAt(i))) i--;
+        return texto.substring(i + 1);
+    }
+
+    private double evaluarExpresion(String expr) {
+        expr = expr.replace(",", ".");
+        Stack<Double> valores = new Stack<>();
+        Stack<Character> ops = new Stack<>();
+
+        for (int i = 0; i < expr.length(); i++) {
+            char c = expr.charAt(i);
+
+            if (c == ' ') continue;
+
+            if ((c >= '0' && c <= '9') || c == '.') {
+                StringBuilder sb = new StringBuilder();
+                while (i < expr.length() && ((expr.charAt(i) >= '0' && expr.charAt(i) <= '9') || expr.charAt(i) == '.')) {
+                    sb.append(expr.charAt(i++));
+                }
+                i--;
+                valores.push(Double.parseDouble(sb.toString()));
+            } else if (esOperador(c)) {
+                while (!ops.isEmpty() && prioridad(ops.peek()) >= prioridad(c)) {
+                    double val2 = valores.pop();
+                    double val1 = valores.pop();
+                    char op = ops.pop();
+                    valores.push(aplicarOperacion(val1, val2, op));
+                }
+                ops.push(c);
+            }
         }
+
+        while (!ops.isEmpty()) {
+            double val2 = valores.pop();
+            double val1 = valores.pop();
+            char op = ops.pop();
+            valores.push(aplicarOperacion(val1, val2, op));
+        }
+
+        return valores.pop();
+    }
+
+    private int prioridad(char op) {
+        if (op == '+' || op == '-') return 1;
+        if (op == '*' || op == '/') return 2;
+        return 0;
+    }
+
+    private double aplicarOperacion(double a, double b, char op) {
+        switch (op) {
+            case '+': return a + b;
+            case '-': return a - b;
+            case '*': return a * b;
+            case '/': return b == 0 ? 0 : a / b;
+        }
+        return 0;
     }
 }

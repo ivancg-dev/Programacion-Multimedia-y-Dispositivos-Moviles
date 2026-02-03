@@ -62,7 +62,7 @@ public class MainActivity extends AppCompatActivity {
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
         adapter.addFragment(new Fragmento1(), "Formulario");
         adapter.addFragment(new Fragmento2(), "Info");
-        adapter.addFragment(new Fragmento3(), "Lista Compra");
+        adapter.addFragment(new Fragmento3(), "Calculadora");
         viewPager.setAdapter(adapter);
     }
 

@@ -24,7 +24,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="30dp"
-            android:text="Validar Email" />
+            android:backgroundTint="#86DEA861"
+            android:text="Validar" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
